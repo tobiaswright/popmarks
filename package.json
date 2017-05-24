@@ -1,0 +1,23 @@
+{
+  "name": "popmarks",
+  "version": "1.0.0",
+  "description": "Temporary store bookmarks",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tobiaswright/popmarks.git"
+  },
+  "author": "Tobias Wright",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tobiaswright/popmarks/issues"
+  },
+  "homepage": "https://github.com/tobiaswright/popmarks#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "webpack-stream": "^3.2.0"
+  }
+}
