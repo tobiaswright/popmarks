@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/tobiaswright/popmarks#readme",
   "dependencies": {
+    "copy-webpack-plugin": "^4.0.1",
     "gulp": "^3.9.1",
     "webpack-stream": "^3.2.0"
   }
