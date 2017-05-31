@@ -7,17 +7,18 @@ let retrieveInput = () => {
     return formVal;
 }
 
-let url = retrieveInput();
-
-submit.addEventListener("click", (url, e) => {
+let returnURLInfo = (e) => {
     e.preventDefault();
 
-    console.log("alloooo");
+    let url = retrieveInput();
+
     fetch('http://localhost:7071/api/getPageInfo?url=' + url)
     .then((response) => {
         response.json().then(function(data) {  
             console.log(data);  
         }); 
     });
-}, false);
+}
+
+submit.addEventListener("click", returnURLInfo, false);
 
