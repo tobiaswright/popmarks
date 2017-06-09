@@ -1,6 +1,7 @@
 const submit =  document.getElementById("submit");
 const formurl = document.getElementById("formurl");
 const pageInfoFunc = 'http://localhost:7071/api/getPageInfo?url=';
+let bookmarks = [];
 
 let retrieveInput = () => {
     let formVal = formurl.value;
@@ -8,13 +9,31 @@ let retrieveInput = () => {
     return formVal;
 }
 
-let insertData = (data) => {
-    console.log(data);
-    let newItem = document.createElement("li");       // Create a <li> node
-    newItem.innerHTML = '<i class="fa fa-trash-o" aria-hidden="true"></i>'
-    let textnode = document.createTextNode(data.data.ogTitle);  // Create a text node
-    newItem.appendChild(textnode);                    // Append the text to <li>
+const string = (data) => {
+    let string = `
+        <p>${data.title}  <i class="fa fa-trash-o" aria-hidden="true"></i></p>
+        <p>${data.desc}</p>
+        <p>${data.site}</p>
+    `;
     
+    return string
+}
+
+let parseData = (data) => {
+    let obj = {
+        title: data.data.ogTitle,
+        desc: data.data.ogDescription,
+        site:data.data.ogSiteName
+    }
+
+    bookmarks.unshift(obj);
+
+    return Promise.resolve(obj)
+}
+
+let insertData = (data) => {
+    let newItem = document.createElement("li");       // Create a <li> node
+    newItem.innerHTML = string(data);
 
     let list = document.getElementById("main");    // Get the <ul> element to insert a new node
     list.insertBefore(newItem, list.childNodes[0]);  // Insert <li> before the first child of <ul>
@@ -27,7 +46,9 @@ let returnURLInfo = (e) => {
 
     fetch(pageInfoFunc + url)
     .then((response) => {
-        response.json().then(insertData); 
+        response.json()
+        .then(parseData)
+        .then(insertData); 
     });
 }
 
