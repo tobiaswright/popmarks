@@ -20,5 +20,8 @@
     "copy-webpack-plugin": "^4.0.1",
     "gulp": "^3.9.1",
     "webpack-stream": "^3.2.0"
+  },
+  "devDependencies": {
+    "webpack": "^3.0.0"
   }
 }
